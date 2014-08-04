@@ -6,8 +6,8 @@ __pycache__/
 *.so
 
 # vim stuff:
-.swp
-.un~
+*.swp
+*.un~
 
 # Distribution / packaging
 .Python
