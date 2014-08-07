@@ -1,15 +1,15 @@
 <html>
-<head>
-<style>
-body {background-color: green;}
-</style>
-</head>
-<body>
-<h1>hello {{dirname}}</h1>
-<ul>
-{% for item in items %}
-        <li><a href="{{base}}/{{item}}">{{item}}</a></li>
-{% endfor %}
-</ul>
-</body>
-</html>
+    <head>
+    <style>
+    body {background-color: green;}
+    </style>
+    </head>
+    <body>
+    <h1>hello {{dirname}}</h1>
+    <ul>
+    {% for item in items %}
+    <li><a href="{{base}}/{{item}}">{{item}}</a></li>
+    {% endfor %}
+    </ul>
+    </body>
+    </html>
