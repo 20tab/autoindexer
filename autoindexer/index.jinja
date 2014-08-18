@@ -1,14 +1,24 @@
 <html>
     <head>
     <style>
-    body {background-color: green;}
+    body {background-color: white;}
+    ul {list-style-type: none;}
+    li {list-style-type: none;}
     </style>
     </head>
     <body>
-    <h1>hello {{dirname}}</h1>
+    <h1>Directory Files {{dirname}}</h1>
     <ul>
+
     {% for item in items %}
-    <li><a href="{{base}}/{{item}}">{{item}}</a></li>
+    <li>
+        <a href="{{item.base}}/{{item.name}}">
+            {% if item.is_dir %}
+                <img src="/folder_icon.png" width="20" height="20" />
+            {% endif %}            
+            {{item.name}}
+        </a>
+    </li>
     {% endfor %}
     </ul>
     </body>
