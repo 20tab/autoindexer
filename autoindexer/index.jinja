@@ -1,25 +1,74 @@
 <html>
     <head>
+    <title>Index Of {{base or "/"}}</title>
+
     <style>
-    body {background-color: white;}
-    ul {list-style-type: none;}
-    li {list-style-type: none;}
+    body {background-color: white; font-family: monospace;}
+
+    table {min-width: 30%;}
+    table caption {
+        text-align: left;
+        font-size: 1.4em;
+        padding: 1em;
+    }
+    table, th, td {
+        border: 0px solid black;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 0.2em;
+        text-align: left;
+    }
+    td img {
+        width: 1.5em;
+        height: 1.5em;
+    }
+    td.img {
+        width: 2em;
+    }
     </style>
     </head>
     <body>
-    <h1>Directory Files {{dirname}}</h1>
-    <ul>
+    <h1>Index Of {{base or "/"}}</h1>
+
+    <table>
+
+    {% if base %}
+    <tr>
+      <td>
+        <a href="{{parent}}"><img src="/static/autoindexer/back_icon.png" /></a>
+      </td>
+      <td>
+        <a href="{{parent}}">..</a>
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+    {% endif %}
 
     {% for item in items %}
-    <li>
+
+    <tr>
+      <td class='img'>
         <a href="{{item.base}}/{{item.name}}">
             {% if item.is_dir %}
-                <img src="/folder_icon.png" width="20" height="20" />
+                <img src="/static/autoindexer/folder_icon.png" />
+            {% else %}
+                {% if item %}
+                    <img src="/static/autoindexer/file_icon.png" />
+                {% endif %}
             {% endif %}            
+        </a>
+      </td>
+      <td>
+        <a href="{{item.base}}/{{item.name}}">
             {{item.name}}
         </a>
-    </li>
+    </td>
+    <td>
+        {{item.size}}
+    </td>
     {% endfor %}
-    </ul>
+    </table>
+
     </body>
-    </html>
+</html>
